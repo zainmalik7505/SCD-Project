@@ -65,7 +65,6 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tfUsername.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        tfUsername.setText(" ");
         jPanel1.add(tfUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(223, 115, 133, -1));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
@@ -84,8 +83,9 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Password:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 162, 95, 32));
 
-        btnLogin.setBackground(new java.awt.Color(255, 0, 0));
+        btnLogin.setBackground(new java.awt.Color(0, 0, 0));
         btnLogin.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        btnLogin.setForeground(new java.awt.Color(255, 255, 0));
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,8 +94,15 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, -1));
 
+        btnRegistration.setBackground(new java.awt.Color(0, 0, 0));
         btnRegistration.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        btnRegistration.setForeground(new java.awt.Color(255, 255, 0));
         btnRegistration.setText("Register");
+        btnRegistration.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrationActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnRegistration, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, -1, 31));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bse203147_bse203158/pngwing.com (1) (2).png"))); // NOI18N
@@ -106,11 +113,11 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 542, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, Short.MAX_VALUE)
         );
 
         pack();
@@ -132,6 +139,15 @@ if (username.isEmpty() || password.isEmpty()) {
     userLogin(username,password);
 }
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnRegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrationActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        Resgistration r = new Resgistration();
+        r.setTitle("Registration");
+        r.setVisible(true);
+        
+    }//GEN-LAST:event_btnRegistrationActionPerformed
 
     /**
      * @param args the command line arguments

@@ -5,6 +5,14 @@
  */
 package bse203147_bse203158;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author zainm
@@ -31,18 +39,18 @@ public class Resgistration extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        tfirstname = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        tflastname = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        tfusername = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        tfpassword = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         jPasswordField2 = new javax.swing.JPasswordField();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        tfaddress = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -61,34 +69,34 @@ public class Resgistration extends javax.swing.JFrame {
         jLabel1.setText("First Name:");
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 26, 111, 24));
 
-        jTextField1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        tfirstname.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        tfirstname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                tfirstnameActionPerformed(evt);
             }
         });
-        jPanel3.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 24, 171, -1));
+        jPanel3.add(tfirstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 24, 171, -1));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel2.setText("Last Name:");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 74, -1, -1));
 
-        jTextField2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jPanel3.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 71, 171, -1));
+        tflastname.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jPanel3.add(tflastname, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 71, 171, -1));
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel3.setText("Username:");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 118, 97, -1));
 
-        jTextField3.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jPanel3.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 118, 171, -1));
+        tfusername.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jPanel3.add(tfusername, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 118, 171, -1));
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel4.setText("Password:");
         jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 165, -1, -1));
 
-        jPasswordField1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
-        jPanel3.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 165, 171, -1));
+        tfpassword.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jPanel3.add(tfpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 165, 171, -1));
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         jLabel5.setText("Re-Type: ");
@@ -101,18 +109,32 @@ public class Resgistration extends javax.swing.JFrame {
         jLabel6.setText("Address:");
         jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(69, 259, 87, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        tfaddress.setColumns(20);
+        tfaddress.setRows(5);
+        jScrollPane1.setViewportView(tfaddress);
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(184, 259, 171, -1));
 
+        jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 0));
         jButton2.setText("Register");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(317, 361, -1, -1));
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
         jButton1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 0));
         jButton1.setText("Cancel");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(59, 361, -1, -1));
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bse203147_bse203158/pngwing.com (3).png"))); // NOI18N
@@ -155,9 +177,34 @@ public class Resgistration extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void tfirstnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfirstnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_tfirstnameActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String fname = tfirstname.getText();
+        String lname = tflastname.getText();
+        String username = tfusername.getText();
+        String password = tfpassword.getText();
+        String address = tfaddress.getText();
+        
+        if(fname.isEmpty() || lname.isEmpty() || username.isEmpty() || password.isEmpty() || address.isEmpty())
+        {
+            JOptionPane.showMessageDialog(this, "Fill Form Properly", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            userRegister(fname, lname, username, password, address);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        Login l = new Login();
+        l.setTitle("Login Page");
+        l.setVisible(true);
+               
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,12 +256,31 @@ public class Resgistration extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextArea tfaddress;
+    private javax.swing.JTextField tfirstname;
+    private javax.swing.JTextField tflastname;
+    private javax.swing.JPasswordField tfpassword;
+    private javax.swing.JTextField tfusername;
     // End of variables declaration//GEN-END:variables
+
+    private void userRegister(String fname, String lname, String username, String password, String address) {
+     Connection dbcon = DBconnection.connectDB();
+        
+        try {
+    PreparedStatement st = (PreparedStatement) dbcon.prepareStatement("INSERT INTO users(firstname,lastname,username,password,address) VALUES(?,?,?,?,?)");
+            st.setString(1,fname);
+            st.setString(2,lname);
+            st.setString(3,username);
+            st.setString(4,password);
+            st.setString(5,address);
+            int res = st.executeUpdate();
+           
+            JOptionPane.showMessageDialog(this, "Successfully Registered ", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+            }
+         catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }    }
 }
